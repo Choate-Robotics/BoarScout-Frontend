@@ -1,56 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { SafeAreaView, View, Text, Animated, Image } from 'react-native';
+import { View, TouchableWithoutFeedback, Image, Text } from 'react-native';
+import { Audio } from "expo-av";
 
-import Header from '../../components/Header/Header';
+import Header from "../../components/Header/Header";
+import AnimatedButton from '../../components/AnimatedButton/AnimatedButton';
 
 import { styles } from './styles';
 import { styles as globalStyles } from '../../global/styles';
 
 
 export default function Onboarding({ navigation }) {
-    const [displayedText, setDisplayedText] = useState("Welcome to BoarScout V2, let's get started.");
-    const [textAnimation] = useState(new Animated.Value(0));
 
-    useEffect(() => {
+    async function easterEgg() {
+		const { sound } = await Audio.Sound.createAsync(
+			require("../../assets/audio/easteregg.mp3")
+		);
+		await sound.playAsync();
+    }
 
-        const fullText = "Welcome to BoarScout V2, let's get started.";
-        let index = 0;
-
-        Animated.timing(textAnimation, {
-            toValue: 1,
-            duration: fullText.length * 100,
-            useNativeDriver: true,
-        }).start();
-
-        const intervalId = setInterval(() => {
-
-            // TODO Remove at PROD
-            clearInterval(intervalId);
-            return
-
-            if (index < fullText.length || displayedText.length == fullText.length) {
-                setDisplayedText((prev) => prev + fullText[index]);
-                index++;
-            } else {
-                clearInterval(intervalId);
-            }
-        }, 100); 
-
-        return () => clearInterval(intervalId);
-
-    }, []);
+    function nextPage() {
+    
+    }
 
     return (
-        <SafeAreaView style={globalStyles.containerVertical}>
-            <Header />
-            <View style={styles.welcome}>
-                <Animated.Text style={[styles.largeText, { opacity: textAnimation }]}>
-                    {displayedText}
-                </Animated.Text>
+        <View style={globalStyles.container}>
+            <Header/>
+            <View style={styles.containHuber}>
+                <TouchableWithoutFeedback onLongPress={easterEgg}>
+                    <Image style={styles.huber} source={require("../../assets/png/huber.png")}/>
+                </TouchableWithoutFeedback>
+                <AnimatedButton onPress={nextPage} style={styles.button}>
+                    <View style={globalStyles.centerBtnText}>
+                        <Text style={globalStyles.buttonText}>Enter Database</Text>
+                    </View>
+                </AnimatedButton>
             </View>
-            <Animated.View style={{opacity: textAnimation}}>
-                <Image source={require('../../assets/png/huber.png')} style={styles.boar} />
-            </Animated.View>
-        </SafeAreaView>
+        </View>
     );
 }

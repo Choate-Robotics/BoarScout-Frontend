@@ -1,21 +1,20 @@
-import { View, Text } from 'react-native';
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { SafeAreaView, View, Text, Image } from 'react-native';
 
 import { styles } from './styles';
 import { styles as globalStyles } from '../../global/styles';
 
-export default function Header(props) {
+
+export default function Onboarding({ navigation }) {
+
     return (
-        <View style={styles.headerContainer}>
-            <View style={globalStyles.row}>
-                <Text style={[styles.letter, {color: "#FFEA00"}]}>7</Text>
+        <SafeAreaView style={styles.containerVertical}>
+            <Image style={styles.wildBoarsHeader} source={require("../../assets/png/wildboars.png")}/>
+            <View style={[globalStyles.row, globalStyles.center]}>
+            <Text style={[styles.letter, {color: "#FFEA00"}]}>7</Text>
                 <Text style={[styles.letter, {color: "#fff"}]}>4</Text>
                 <Text style={[styles.letter, {color: "#FFEA00"}]}>0</Text>
                 <Text style={[styles.letter, {color: "#fff"}]}>7</Text>
             </View>
-            <View style={[globalStyles.line, {backgroundColor: "#FFEA00", marginBottom: hp(0.5)}]}/>
-            <View style={[globalStyles.line, { backgroundColor: "#fff"}]}/>
-        </View>
-    )
+        </SafeAreaView>
+    );
 }
-

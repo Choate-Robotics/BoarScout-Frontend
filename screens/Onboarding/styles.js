@@ -21,4 +21,28 @@ export const styles = StyleSheet.create({
         color: '#fff',
         lineHeight: hp(5)
     },
+    wildBoarsHeader: {
+        width: wp(15),
+        height: wp(15),
+        marginLeft: wp(7.5),
+        marginTop: hp(1)
+    },
+    containHuber: {
+        marginBottom: hp(10)
+    },
+    huber: {
+        width: wp(100),
+        resizeMode: 'contain',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    button: {
+        width: wp(80),
+        height: hp(8),
+        borderRadius: 10,
+        backgroundColor: '#B8AD38',
+        alignSelf: 'center',
+        marginBottom: hp(2),
+        marginTop: hp(30),
+    }
 });
