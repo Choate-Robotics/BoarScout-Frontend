@@ -4,18 +4,14 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from "expo-font";
 
 import Onboarding from "./screens/Onboarding/Onboarding";
+import ListMatches from "./screens/ListMatches/ListMatches";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
 	const [fontsLoaded] = useFonts({
-		"Inter-Bold": require("./assets/fonts/Inter-Bold.otf"),
-		"Inter-SemiBold": require("./assets/fonts/Inter-SemiBold.otf"),
-		"Inter-Medium": require("./assets/fonts/Inter-Medium.otf"),
-		"Inter-Regular": require("./assets/fonts/Inter-Regular.otf"),
-		"Roboto-Medium": require("./assets/fonts/Roboto-Medium.otf"),
-		"Roboto-Regular": require("./assets/fonts/Roboto-Regular.otf"),
-		"Roboto-Bold": require("./assets/fonts/Roboto-Bold.otf"),
+		"Montserrat-ExtraBoldItalic": require("./assets/fonts/Montserrat-ExtraBoldItalic.otf"),
+		"Satoshi-Medium": require("./assets/fonts/Satoshi-Medium.otf"),
 	});
 
 	if (!fontsLoaded) {
@@ -31,6 +27,7 @@ export default function App() {
 				}}
 			>
 				<Stack.Screen name="onboarding" component={Onboarding} />
+				<Stack.Screen name="listmatches" component={ListMatches} />
 			</Stack.Navigator>
 			<StatusBar style="auto" />
 		</NavigationContainer>

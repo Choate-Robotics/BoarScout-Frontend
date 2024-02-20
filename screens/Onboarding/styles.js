@@ -2,47 +2,31 @@ import { StyleSheet } from "react-native";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 
 export const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#032D64',
-        alignItems: 'center',
-        justifyContent: 'center',
+    alignText: {
+        alignSelf: "center",
+        alignItems: "center",
+        marginTop: hp(14),
     },
-    welcome: {
-        alignSelf: 'flex-start',
-        marginHorizontal: wp(5),
-        marginTop: hp(1),
-        height: hp(15),
-        marginBottom: hp(5)
+    largeIntroText: {
+        color: "#FFE603",
+        fontFamily: "Montserrat-ExtraBoldItalic",
+        fontSize: wp(25),
     },
-    largeText: {
-        fontFamily: 'Inter-Medium',
-        fontSize: wp(7),
-        color: '#fff',
-        lineHeight: hp(5)
+    alignButton: {
+        marginTop: hp(45),
     },
-    wildBoarsHeader: {
-        width: wp(15),
-        height: wp(15),
-        marginLeft: wp(7.5),
-        marginTop: hp(1)
-    },
-    containHuber: {
-        marginBottom: hp(10)
-    },
-    huber: {
-        width: wp(100),
-        resizeMode: 'contain',
-        alignSelf: 'center',
-        justifyContent: 'center',
-    },
-    button: {
+    animatedBtnStyle: {
         width: wp(80),
-        height: hp(8),
-        borderRadius: 10,
-        backgroundColor: '#B8AD38',
-        alignSelf: 'center',
-        marginBottom: hp(2),
-        marginTop: hp(30),
+        height: hp(8.5),
+        backgroundColor: "#007FB6",
+        borderRadius: hp(2),
+        borderWidth: hp(0.3),
+        borderColor: 'rgba(255, 255, 255, 0.5)',
+        borderColorOpacity: 0.5,
+    },
+    startBtnText: {
+        color: "#fff",
+        fontFamily: "Satoshi-Medium",
+        fontSize: wp(10),
     }
 });

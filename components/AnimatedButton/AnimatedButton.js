@@ -2,11 +2,10 @@ import { useState } from "react";
 import { Pressable, Animated  } from "react-native";
 
 import { styles } from "./styles";
-import { styles as globalStyles } from "../../global/styles";
 import { sendHaptic } from "../../helpers/sendHaptic";
 
 export default function AnimatedButton({ style, onPress, children }) {
-    const [animation, setAnimation] = useState(new Animated.Value(1));
+    const [animation] = useState(new Animated.Value(1));
 
     function handlePress() {
         sendHaptic.impactMedium();

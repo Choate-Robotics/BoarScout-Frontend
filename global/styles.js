@@ -12,25 +12,9 @@ export const styles = StyleSheet.create({
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
     },
-    line: {
-        height: hp(0.5),
-        width: wp(100)
-    },
-    row: {
-        flexDirection: 'row',
-    },
-    center: {
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     centerBtnText: {
         justifyContent: "center",
         flex: 1,
         alignItems: "center"
-    },
-    buttonText: {
-        fontFamily: 'Inter-Bold',
-        fontSize: hp(2.5),
-        color: '#fff'
-    },
+    }
 });
