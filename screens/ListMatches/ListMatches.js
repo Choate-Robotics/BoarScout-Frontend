@@ -15,6 +15,9 @@ export default function ListMatches({ navigation, ...props }) {
     const [refreshing, setRefreshing] = useState(false);
     const [title, setTitle] = useState(props.route.params.title);
 
+    const [gameIndex, setGameIndex] = useState(0);
+    const [matchData, setMatchData] = useState({});
+
 
     const loadType = {
         getEvents: async (item) => {
@@ -49,6 +52,10 @@ export default function ListMatches({ navigation, ...props }) {
                 return;
             }
 
+            setMatchData({
+                key: item.key,
+                name: item.name,
+            })
             setLoadedEvents(response.matches);
             setTitle("listgames");
         }
@@ -76,13 +83,20 @@ export default function ListMatches({ navigation, ...props }) {
 
     async function loadEvent(item) {
 
-        setLoadedEvents([]);
-
         if(title == "listevents") {
+            setLoadedEvents([]);
             await loadType.getGames(item);
         } else if(title == "listgames") {
-            //await loadType.getGames(item);
+            setGameIndex(loadedEvents.indexOf(item));
+            setLoadedEvents(loadedEvents[gameIndex].blue.concat(loadedEvents[gameIndex].red));
+            setTitle("listteams");
+        } else {
+            navigation.navigate("scoutpage", {
+                team: item,
+                event: matchData,
+            });
         }
+
     }
 
     return (
@@ -105,15 +119,16 @@ export default function ListMatches({ navigation, ...props }) {
                             />
                         }
                         style={styles.list}
+                        showsVerticalScrollIndicator={false}
                         data={loadedEvents}
                         key={(item) => loadedEvents.indexOf(item).toString()}
                         renderItem={({ item }) => {
                             
                             if(title == "listteams") {
                                 return (
-                                    <AnimatedButton style={[styles.animatedBtn, {backgroundColor: item.color}]} onPress={() => loadEvent(item)}>
+                                    <AnimatedButton style={[styles.animatedBtn, {backgroundColor: loadedEvents.indexOf(item) < 3 ? "#007FB6": "#BE3030"}]} onPress={() => loadEvent(item)}>
                                         <View style={[globalStyles.centerBtnText, styles.modifyCenterBtnText]}>
-                                            <Text style={styles.gameText}>{item.name}</Text>
+                                            <Text style={styles.gameText}>{`Team ${item.substring(3)}`}</Text>
                                         </View>
                                     </AnimatedButton>
                                 )
@@ -121,7 +136,7 @@ export default function ListMatches({ navigation, ...props }) {
                                 return (
                                     <AnimatedButton style={styles.animatedBtn} onPress={() => loadEvent(item)}>
                                         <View style={[globalStyles.centerBtnText, styles.modifyCenterBtnText]}>
-                                            <Text style={styles.gameText}>{item.name}</Text>
+                                            <Text style={styles.gameText}>{title =="listevents" ? item.name: `Game ${String(loadedEvents.indexOf(item) + 1)}`}</Text>
                                         </View>
                                     </AnimatedButton>
                                 )

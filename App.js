@@ -7,6 +7,7 @@ import FlashMessage from "react-native-flash-message";
 import Onboarding from "./screens/Onboarding/Onboarding";
 import ListMatches from "./screens/ListMatches/ListMatches";
 import FormEnter from "./screens/FormEnter/FormEnter";
+import ScoutPage from "./screens/ScoutPage/ScoutPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ export default function App() {
 		"Satoshi-Medium": require("./assets/fonts/Satoshi-Medium.otf"),
 		"Satoshi-Bold": require("./assets/fonts/Satoshi-Bold.otf"),
 		"Satoshi-Regular": require("./assets/fonts/Satoshi-Regular.otf"),
+		"Satoshi-Black": require("./assets/fonts/Satoshi-Black.otf"),
 	});
 
 	if (!fontsLoaded) {
@@ -33,6 +35,7 @@ export default function App() {
 				<Stack.Screen name="onboarding" component={Onboarding} />
 				<Stack.Screen name="listmatches" component={ListMatches} />
 				<Stack.Screen name="formenter" component={FormEnter} />
+				<Stack.Screen name="scoutpage" component={ScoutPage} />
 			</Stack.Navigator>
 			<FlashMessage position="top" />
 			<StatusBar style="auto" />

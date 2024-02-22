@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
     },
     list: {
         marginTop: hp(3),
+        marginBottom: hp(23),
     },
     animatedBtn: {
         width: wp(80),
