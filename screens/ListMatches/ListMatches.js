@@ -10,41 +10,79 @@ import { requestServer } from '../../api/requestServer';
 import { storage } from '../../helpers/storage';
 import { showMessage } from 'react-native-flash-message';
 
-export default function ListMatches({ navigation }) {
+export default function ListMatches({ navigation, ...props }) {
     const [loadedEvents, setLoadedEvents] = useState([]);
     const [refreshing, setRefreshing] = useState(false);
+    const [title, setTitle] = useState(props.route.params.title);
 
-    async function getMatches() {
-        const response = await requestServer({
-            method: "GET",
-            endpoint: `events?team=${await storage.getItem("team")}`,
-        });
 
-        if(response === false) {
-            showMessage({
-                message: "Error: Could not retrieve events",
-                backgroundColor: "#9a1212",
-                color: "white",
+    const loadType = {
+        getEvents: async (item) => {
+            const response = await requestServer({
+                method: "GET",
+                endpoint: `events?team=${await storage.getItem("team")}`,
             });
-            return;
-        }
+    
+            if(response === false) {
+                showMessage({
+                    message: "Error: Could not retrieve events",
+                    backgroundColor: "#9a1212",
+                    color: "white",
+                });
+                return;
+            }
+    
+            setLoadedEvents(response.events);
+        },
+        getGames: async (item) => {
+            const response = await requestServer({
+                method: "GET",
+                endpoint: `games?event=${item.key}`,
+            });
 
-        setLoadedEvents(response.events);
+            if(response === false) {
+                showMessage({
+                    message: "Error: Could not retrieve events",
+                    backgroundColor: "#9a1212",
+                    color: "white",
+                });
+                return;
+            }
+
+            setLoadedEvents(response.matches);
+            setTitle("listgames");
+        }
     }
 
     async function refreshEvents() {
+        
         setRefreshing(true);
-        await getMatches();
+        if(title == "listevents") {
+            await loadType.getEvents();
+        } else if(title == "listgames") {
+            await loadType.getGames();
+        }
         setRefreshing(false);
     
     }
 
     useEffect(() => {
-        getMatches();
+        if(title == "listevents") {
+            loadType.getEvents();
+        } else if(title == "listgames") {
+            loadType.getGames();
+        }
     }, []);
 
-    function loadEvent() {
-        
+    async function loadEvent(item) {
+
+        setLoadedEvents([]);
+
+        if(title == "listevents") {
+            await loadType.getGames(item);
+        } else if(title == "listgames") {
+            //await loadType.getGames(item);
+        }
     }
 
     return (
@@ -53,7 +91,7 @@ export default function ListMatches({ navigation }) {
                 <Image source={require("../../assets/png/wildboars.png")} style={styles.logo} />
             </View>
             <View style={styles.alignGamesText}>
-                <Text style={styles.titleText}>Games</Text>
+                <Text style={styles.titleText}>{title == "listevents" ? "Matches": title == "listgames" ? "Games": "Teams"}</Text>
             </View>
             <View style={styles.body}>
                 {loadedEvents.length > 0 ? (
@@ -68,15 +106,27 @@ export default function ListMatches({ navigation }) {
                         }
                         style={styles.list}
                         data={loadedEvents}
-                        keyExtractor={(item) => item.id}
-                        key={item => item.id}
-                        renderItem={({ item }) => (
-                            <AnimatedButton style={styles.animatedBtn} onPress={() => loadEvent(item)}>
-                                <View style={[globalStyles.centerBtnText, styles.modifyCenterBtnText]}>
-                                    <Text style={styles.gameText}>{item.name}</Text>
-                                </View>
-                            </AnimatedButton>
-                        )}
+                        key={(item) => loadedEvents.indexOf(item).toString()}
+                        renderItem={({ item }) => {
+                            
+                            if(title == "listteams") {
+                                return (
+                                    <AnimatedButton style={[styles.animatedBtn, {backgroundColor: item.color}]} onPress={() => loadEvent(item)}>
+                                        <View style={[globalStyles.centerBtnText, styles.modifyCenterBtnText]}>
+                                            <Text style={styles.gameText}>{item.name}</Text>
+                                        </View>
+                                    </AnimatedButton>
+                                )
+                            } else {
+                                return (
+                                    <AnimatedButton style={styles.animatedBtn} onPress={() => loadEvent(item)}>
+                                        <View style={[globalStyles.centerBtnText, styles.modifyCenterBtnText]}>
+                                            <Text style={styles.gameText}>{item.name}</Text>
+                                        </View>
+                                    </AnimatedButton>
+                                )
+                            }
+                        }}
                     />
                 ) : (
                     <View style={styles.alignIndicator}>

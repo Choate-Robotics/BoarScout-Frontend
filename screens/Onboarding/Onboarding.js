@@ -10,7 +10,9 @@ export default function Onboarding({ navigation }) {
 
     async function nextPage() {
         if(await storage.getItem("authenticated")) {
-            navigation.navigate("listmatches");
+            navigation.navigate("listmatches", {
+                title: "listevents"
+            });
         } else {
             navigation.navigate("formenter", {
                 pageData: {
