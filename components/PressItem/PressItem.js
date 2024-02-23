@@ -9,12 +9,15 @@ import BackgroundBtn from "../../assets/svg/BackgroundBtn";
 import { styles } from "./styles";
 import { styles as globalStyles } from "../../global/styles";
 
-export default function PressItem({ item, onPress, keyVal, data }) {
+export default function PressItem({ item, onPress, keyVal, data, ...props }) {
     const [imageBg, setImageBg] = useState(item.success ? "#56972E" : "#BE3030");
     const [image, setImage] = useState(item.name == "speaker" ? <Speaker color={imageBg} /> : <Amp color={imageBg} />);
 
     function modifyData() {
-        onPress(keyVal, (data[keyVal[0]][keyVal[1]] + 1))
+        onPress(keyVal, (data[keyVal[0]][keyVal[1]] + 1));
+        if(props.attemptsVal) {
+            onPress(props.attemptsVal, (data[props.attemptsVal[0]][props.attemptsVal[1]] + 1));
+        }
     }
 
     return (

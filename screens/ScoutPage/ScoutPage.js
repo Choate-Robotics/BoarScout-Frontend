@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { View, Text, ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 
 import AnimatedButton from "../../components/AnimatedButton/AnimatedButton";
 import PressItem from "../../components/PressItem/PressItem";
@@ -13,7 +14,7 @@ export default function ScoutPage({ navigation, ...props }) {
 		auto: {
 			attemptsSpeaker: 0,
 			successSpeaker: 0,
-			attempsAmp: 0,
+			attemptsAmp: 0,
 			successAmp: 0,
 			closeNote: false,
 			farNote: false,
@@ -40,8 +41,10 @@ export default function ScoutPage({ navigation, ...props }) {
 	const event = props.route.params.event;
 
 	const [mode, setMode] = useState("auto");
+    const [history, setHistory] = useState([]);
 
     function changeData(key, value) {
+        setHistory(prevHistory => [...prevHistory, data]);
         setData(prevData => ({
             ...prevData,
             [key[0]]: {
@@ -51,9 +54,12 @@ export default function ScoutPage({ navigation, ...props }) {
         }));
     }    
 
-
 	function undo() {
-		// TODO
+        if (history.length > 0) {
+            const previousState = history[history.length - 1];
+            setHistory(history.slice(0, -1));
+            setData(previousState);
+        }
 	}
 
 	switch (mode) {
@@ -79,7 +85,7 @@ export default function ScoutPage({ navigation, ...props }) {
 							</AnimatedButton>
 						</View>
 						<View style={styles.alignViewBody}>
-							<View style={globalStyles.row}>
+							<View style={[globalStyles.row, {marginBottom: hp(2)}]}>
 								<PressItem
 									item={{ name: "speaker", success: false }}
 									onPress={changeData}
@@ -91,6 +97,22 @@ export default function ScoutPage({ navigation, ...props }) {
 									onPress={changeData}
 									data={data}
 									keyVal={["auto", "successSpeaker"]}
+                                    attemptsVal={["auto", "attemptsSpeaker"]}
+								/>
+							</View>
+                            <View style={[globalStyles.row, {marginBottom: hp(2)}]}>
+								<PressItem
+									item={{ name: "amp", success: false }}
+									onPress={changeData}
+									data={data}
+									keyVal={["auto", "attemptsAmp"]}
+								/>
+								<PressItem
+									item={{ name: "amp", success: true }}
+									onPress={changeData}
+									data={data}
+									keyVal={["auto", "successAmp"]}
+                                    attemptsVal={["auto", "attemptsAmp"]}
 								/>
 							</View>
 						</View>
