@@ -39,5 +39,8 @@ export const styles = StyleSheet.create({
         fontFamily: "Satoshi-Medium",
         fontSize: wp(5),
         color: "#000",
+    },
+    alignViewBody: {
+        marginTop: hp(5)
     }
 });

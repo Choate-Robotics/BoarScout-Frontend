@@ -35,5 +35,9 @@ export const styles = StyleSheet.create({
         color: "#fff",
         fontFamily: "Satoshi-Medium",
         fontSize: wp(10),
+    },
+    row: {
+        flexDirection: "row",
+        justifyContent: "space-around"
     }
 });
