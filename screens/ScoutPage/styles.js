@@ -21,6 +21,7 @@ export const styles = StyleSheet.create({
     headerRow: {
         flexDirection: "row",
         alignItems: "center",
+        alignSelf: "center",
     },
     undoBtn: {
         height: hp(6),
@@ -41,6 +42,18 @@ export const styles = StyleSheet.create({
         color: "#000",
     },
     alignViewBody: {
-        marginTop: hp(5)
+        marginTop: hp(5),
+        paddingTop: hp(2),
+        marginBottom: hp(4),
+    },
+    input: {
+        height: hp(30),
+        width: wp(80),
+        backgroundColor: "#fff",
+        borderRadius: hp(1),
+        paddingLeft: wp(2),
+        fontFamily: "Satoshi-Medium",
+        fontSize: wp(5),
+        marginHorizontal: wp(2),
     }
 });
