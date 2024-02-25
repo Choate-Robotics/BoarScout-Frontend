@@ -17,7 +17,7 @@ import { styles } from "./styles";
 import { styles as globalStyles } from "../../global/styles";
 
 export default function PressItem({ item, onPress, keyVal, data, ...props }) {
-    const [imageBg, setImageBg] = useState(item.success ? "#56972E" : "#BE3030");
+    const [imageBg, setImageBg] = useState(null);
     const [heightWidth, setHeightWidth] = useState({});
     const [image, setImage] = useState();
 
@@ -29,10 +29,12 @@ export default function PressItem({ item, onPress, keyVal, data, ...props }) {
             case "speaker":
                 newHeightWidth = { height: hp(18), width: hp(18) };
                 newImage = <Speaker color={imageBg} />;
+                setImageBg(item.success ? "#56972E" : "#BE3030");
                 break;
             case "amp":
                 newHeightWidth = { height: hp(18), width: hp(18) };
                 newImage = <Amp color={imageBg} />;
+                setImageBg(item.success ? "#56972E" : "#BE3030");
                 break;
             case "botclose":
                 newHeightWidth = { height: hp(10), width: hp(18) };
@@ -48,9 +50,14 @@ export default function PressItem({ item, onPress, keyVal, data, ...props }) {
                 newHeightWidth = { height: hp(16), width: wp(82.5) };
                 setImageBg("#ffffff");
                 break;
+            case "autoSelectStart":
+                newHeightWidth = { height: hp(20), width: wp(82.5) };
+                setImageBg("#ffffff");
+                break;
             case "notefromfloor":
                 newHeightWidth = { height: hp(10), width: hp(18) };
                 newImage = <NoteFromFloor color={imageBg} />;
+                setImageBg("#ffffff");
                 break;
             case "climb":
                 newHeightWidth = { height: hp(10), width: hp(18) };

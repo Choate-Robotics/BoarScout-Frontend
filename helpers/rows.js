@@ -4,6 +4,23 @@ import { styles } from "../global/styles";
 export const AUTO_ROWS = [
 	{
 		items: [
+			{
+				name: "autoSelectStart",
+				single: true,
+				selecter: true,
+				count: 3,
+				nameVal: ["Left", "Middle", "Right"],
+				keyVal: [
+					["auto", "startLeft"],
+					["auto", "startMiddle"],
+					["auto", "startRight"]
+				],
+			},
+		],
+		style: { justifyContent: "center" },
+	},
+	{
+		items: [
 			{ name: "speaker", keyVal: ["auto", "attemptsSpeaker"] },
 			{
 				name: "speaker",
@@ -45,7 +62,7 @@ export const AUTO_ROWS = [
 			},
 		],
 		style: { justifyContent: "center" },
-	},
+	}
 ];
 
 export const TELEOP_ROWS = [

@@ -8,6 +8,7 @@ import Onboarding from "./screens/Onboarding/Onboarding";
 import ListMatches from "./screens/ListMatches/ListMatches";
 import FormEnter from "./screens/FormEnter/FormEnter";
 import ScoutPage from "./screens/ScoutPage/ScoutPage";
+import QRModal from "./screens/QRModal/QRModal";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +37,12 @@ export default function App() {
 				<Stack.Screen name="listmatches" component={ListMatches} />
 				<Stack.Screen name="formenter" component={FormEnter} />
 				<Stack.Screen name="scoutpage" component={ScoutPage} />
+				<Stack.Group screenOptions={{ presentation: "transparentModal" }}>
+					<Stack.Screen 
+						name="qrmodal" 
+						component={QRModal} 
+					/>
+				</Stack.Group>
 			</Stack.Navigator>
 			<FlashMessage position="top" />
 			<StatusBar style="auto" />

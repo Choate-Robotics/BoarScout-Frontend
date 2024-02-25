@@ -18,6 +18,12 @@ export default function ListMatches({ navigation, ...props }) {
     const [gameIndex, setGameIndex] = useState(0);
     const [matchData, setMatchData] = useState({});
 
+    useEffect(() => {
+		if (props.route.params?.wentBack) {
+			setTitle(props.route.params.title);
+            loadType.getEvents();
+		}
+	}, [props.route.params]);
 
     const loadType = {
         getEvents: async (item) => {

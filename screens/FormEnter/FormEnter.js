@@ -75,7 +75,10 @@ export default function FormEnter({ navigation, ...props }) {
 
                 if(resData.code == 200) {
                     storage.createItem("authenticated", "true");
-                    navigation.navigate("listmatches");
+                    storage.createItem("teamCode", text);
+                    navigation.navigate("listmatches", {
+                        title: "listevents"
+                    });
                 } else {
                     showMessage({
                         message: "Error: Team code is incorrect",
