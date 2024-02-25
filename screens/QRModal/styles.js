@@ -1,5 +1,9 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
+
+const HEIGHT = Dimensions.get("window").height;
+
+console.log(HEIGHT)
 
 export const styles = StyleSheet.create({
     containerVertical: {
@@ -9,7 +13,7 @@ export const styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0)', 
     },
     modalAttributes: {
-        height: hp(65),
+        height: "65%",
         width: "100%",
         backgroundColor: "#032D64",
         borderTopRightRadius: hp(3),
@@ -20,8 +24,8 @@ export const styles = StyleSheet.create({
         alignItems: "center",
     },
     QRCover: {
-        height: wp(70),
-        width: wp(70),
+        height: wp(HEIGHT * 0.0829),
+        width: wp(HEIGHT * 0.0829),
         backgroundColor: "white",
         marginTop: hp(3),
         borderRadius: hp(3),

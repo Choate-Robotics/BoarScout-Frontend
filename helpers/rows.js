@@ -92,7 +92,6 @@ export const TELEOP_ROWS = [
 	},
 	{
 		items: [{ name: "notefromfloor", keyVal: ["teleop", "noteFromFloor"] }],
-		style: { justifyContent: "flex-start", marginLeft: wp(-2) },
 	},
 ];
 
