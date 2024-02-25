@@ -3,8 +3,6 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-nat
 
 const HEIGHT = Dimensions.get("window").height;
 
-console.log(HEIGHT)
-
 export const styles = StyleSheet.create({
     containerVertical: {
         flex: 1,
