@@ -39,8 +39,10 @@ export default function ScoutPage({ navigation, ...props }) {
 		teleop: {
 			attemptsSpeaker: 0,
 			successSpeaker: 0,
+			successChargedSpeaker: 0,
 			attemptsAmp: 0,
 			successAmp: 0,
+			successChargedAmp: 0,
 			noteFromFloor: 0,
 		},
 		endgame: {
@@ -117,17 +119,33 @@ export default function ScoutPage({ navigation, ...props }) {
 		}));
 	};
 
-	if(data.auto.startLeft) {
-		data.auto.startMiddle = false;
-		data.auto.startRight = false;
-	} else if(data.auto.startMiddle) {
-		data.auto.startLeft = false;
-		data.auto.startRight = false;
-	} else {
-		data.auto.startLeft = false;
-		data.auto.startMiddle = false;
-	}
-
+	useEffect(() => {
+		if (data.auto.startLeft) {
+			setData(prevData => ({
+				...prevData,
+				auto: { ...prevData.auto, startMiddle: false, startRight: false }
+			}));
+		}
+	}, [data.auto.startLeft]);
+	
+	useEffect(() => {
+		if (data.auto.startMiddle) {
+			setData(prevData => ({
+				...prevData,
+				auto: { ...prevData.auto, startLeft: false, startRight: false }
+			}));
+		}
+	}, [data.auto.startMiddle]);
+	
+	useEffect(() => {
+		if (data.auto.startRight) {
+			setData(prevData => ({
+				...prevData,
+				auto: { ...prevData.auto, startLeft: false, startMiddle: false }
+			}));
+		}
+	}, [data.auto.startRight]);
+	
 	return (
 		<TouchableWithoutFeedback
 			onPress={() => (mode == "End" ? textInputRef.current.blur() : null)}
@@ -190,6 +208,9 @@ export default function ScoutPage({ navigation, ...props }) {
 														keyVal={item.keyVal}
 														attemptsVal={
 															item.attemptsVal
+														}
+														attemptsVal2={
+															item.attemptsVal2
 														}
 														count={item.count}
 														nameVal={item.nameVal}

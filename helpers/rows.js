@@ -68,27 +68,47 @@ export const AUTO_ROWS = [
 export const TELEOP_ROWS = [
 	{
 		items: [
-			{ name: "speaker", keyVal: ["teleop", "attemptsSpeaker"] },
+			{ name: "speaker", keyVal: ["teleop", "attemptsSpeaker"], tiny: true },
 			{
 				name: "speaker",
 				success: true,
 				keyVal: ["teleop", "successSpeaker"],
 				attemptsVal: ["teleop", "attemptsSpeaker"],
+				tiny: true
+			},
+			{
+				name: "speaker",
+				success: true,
+				amped: true,
+				keyVal: ["teleop", "successChargedSpeaker"],
+				attemptsVal: ["teleop", "attemptsSpeaker"],
+				attemptsVal2: ["teleop", "successSpeaker"],
+				tiny: true
 			},
 		],
-		style: { marginHorizontal: wp(-4) },
+		style: { marginHorizontal: wp(-7) },
 	},
 	{
 		items: [
-			{ name: "amp", keyVal: ["teleop", "attemptsAmp"] },
+			{ name: "amp", keyVal: ["teleop", "attemptsAmp"], tiny: true },
 			{
 				name: "amp",
 				success: true,
 				keyVal: ["teleop", "successAmp"],
 				attemptsVal: ["teleop", "attemptsAmp"],
+				tiny: true
+			},
+			{
+				name: "amp",
+				success: true,
+				amped: true,
+				keyVal: ["teleop", "successChargedAmp"],
+				attemptsVal: ["teleop", "attemptsAmp"],
+				attemptsVal2: ["teleop", "successAmp"],
+				tiny: true
 			},
 		],
-		style: { marginHorizontal: wp(-4) },
+		style: { marginHorizontal: wp(-7) },
 	},
 	{
 		items: [{ name: "notefromfloor", keyVal: ["teleop", "noteFromFloor"] }],

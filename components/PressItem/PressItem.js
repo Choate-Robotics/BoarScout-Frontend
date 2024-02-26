@@ -27,14 +27,14 @@ export default function PressItem({ item, onPress, keyVal, data, ...props }) {
 
         switch(item.name) {
             case "speaker":
-                newHeightWidth = { height: hp(18), width: hp(18) };
-                newImage = <Speaker color={imageBg} />;
-                setImageBg(item.success ? "#56972E" : "#BE3030");
+                newHeightWidth = { height: item.tiny ? hp(13) : hp(18), width: item.tiny ? hp(13) : hp(18) };
+                newImage = <Speaker color={imageBg} width={item.tiny ? wp(15) : wp(20)} height={item.tiny ? hp(10) : hp(12)} />;
+                setImageBg(item.amped ? "#ccb809" : item.success ? "#56972E" : "#BE3030");
                 break;
             case "amp":
-                newHeightWidth = { height: hp(18), width: hp(18) };
-                newImage = <Amp color={imageBg} />;
-                setImageBg(item.success ? "#56972E" : "#BE3030");
+                newHeightWidth = { height: item.tiny ? hp(13) : hp(18), width: item.tiny ? hp(13) : hp(18) };
+                newImage = <Amp color={imageBg} width={item.tiny ? wp(20) : wp(25)} height={item.tiny ? hp(12) : hp(15)} />;
+                setImageBg(item.amped ? "#ccb809" : item.success ? "#56972E" : "#BE3030");
                 break;
             case "botclose":
                 newHeightWidth = { height: hp(10), width: hp(18) };
@@ -93,6 +93,9 @@ export default function PressItem({ item, onPress, keyVal, data, ...props }) {
             onPress(keyVal, typeof data[keyVal[0]][keyVal[1]] == 'boolean' ? !data[keyVal[0]][keyVal[1]] : (data[keyVal[0]][keyVal[1]] + 1));
             if(props.attemptsVal) {
                 onPress(props.attemptsVal, (data[props.attemptsVal[0]][props.attemptsVal[1]] + 1));
+            }
+            if(props.attemptsVal2) {
+                onPress(props.attemptsVal2, (data[props.attemptsVal2[0]][props.attemptsVal2[1]] + 1));
             }
         }
     }

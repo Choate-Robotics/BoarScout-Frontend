@@ -2,39 +2,58 @@
   "expo": {
     "name": "BoarScout",
     "slug": "BoarScout",
-    "version": "1.0.0",
+    "scheme": "BoarScout",
+    "version": "1.1.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#032D64"
+      "backgroundColor": "#ffffff"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.boarscout.app",
-      "buildNumber": "10"
+      "buildNumber": "203",
+      "bundleIdentifier": "com.splashsoftwarellc.boarscout2",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Use camera for app",
+        "NSPhotoLibraryUsageDescription": "Use photo lib in app",
+        "NSMicrophoneUsageDescription": "Need mic for app"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#032D64"
+        "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      "expo-font"
-    ],
     "extra": {
       "eas": {
         "projectId": "debb7e71-9997-4398-ac3d-93ad91208599"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "13.4"
+          }
+        }
+      ],
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Allow Boarscout to access your microphone."
+        }
+      ]
+    ]
   }
 }

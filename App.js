@@ -30,7 +30,7 @@ export default function App() {
 			<Stack.Navigator
 				screenOptions={{
 					headerShown: false,
-					gestureEnabled: true,
+					gestureEnabled: false,
 				}}
 			>
 				<Stack.Screen name="onboarding" component={Onboarding} />
