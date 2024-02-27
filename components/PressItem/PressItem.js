@@ -56,7 +56,12 @@ export default function PressItem({ item, onPress, keyVal, data, ...props }) {
                 break;
             case "notefromfloor":
                 newHeightWidth = { height: hp(10), width: hp(18) };
-                newImage = <NoteFromFloor color={imageBg} />;
+                newImage = <Text style={[styles.renameVal, {fontFamily: "Satoshi-Bold"}]}>NFF</Text>
+                setImageBg("#ffffff");
+                break;
+            case "notefromsource":
+                newHeightWidth = { height: hp(10), width: hp(18) };
+                newImage = <Text style={[styles.renameVal, {fontFamily: "Satoshi-Bold"}]}>NFS</Text>
                 setImageBg("#ffffff");
                 break;
             case "climb":

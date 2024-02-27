@@ -1,5 +1,4 @@
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
-import { styles } from "../global/styles";
 
 export const AUTO_ROWS = [
 	{
@@ -9,7 +8,7 @@ export const AUTO_ROWS = [
 				single: true,
 				selecter: true,
 				count: 3,
-				nameVal: ["Left", "Middle", "Right"],
+				nameVal: ["Amp Side", "Middle", "Source Side"],
 				keyVal: [
 					["auto", "startLeft"],
 					["auto", "startMiddle"],
@@ -111,7 +110,11 @@ export const TELEOP_ROWS = [
 		style: { marginHorizontal: wp(-7) },
 	},
 	{
-		items: [{ name: "notefromfloor", keyVal: ["teleop", "noteFromFloor"] }],
+		items: [
+			{ name: "notefromfloor", keyVal: ["teleop", "noteFromFloor"] },
+			{ name: "notefromsource", keyVal: ["teleop", "noteFromSource"] }
+		],
+		style: { marginHorizontal: wp(-4) },
 	},
 ];
 
@@ -127,6 +130,23 @@ export const ENDGAME_ROWS = [
 			{ name: "trap", single: true, keyVal: ["endgame", "trap"] },
 			{ name: "spotlight", single: true, keyVal: ["endgame", "spotlight"] },
 		],
-	}
+	},
+	{
+		items: [
+			{
+				name: "autoSelectStart",
+				single: true,
+				selecter: true,
+				count: 3,
+				nameVal: ["Over 30 Sec", "Under 30 Sec", "Defense Bot"],
+				keyVal: [
+					["endgame", "over30"],
+					["endgame", "under30"],
+					["endgame", "wasDefenseBot"],
+				],
+			},
+		],
+		style: { justifyContent: "center" },
+	},
 ]
 

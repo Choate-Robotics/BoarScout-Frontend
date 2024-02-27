@@ -22,6 +22,7 @@ import { AUTO_ROWS, TELEOP_ROWS, ENDGAME_ROWS } from "../../helpers/rows";
 export default function ScoutPage({ navigation, ...props }) {
 	const [data, setData] = useState({
 		event: props.route.params.event,
+		match: props.route.params.match,
 		team: props.route.params.team,
 		auto: {
 			startLeft: false,
@@ -44,12 +45,16 @@ export default function ScoutPage({ navigation, ...props }) {
 			successAmp: 0,
 			successChargedAmp: 0,
 			noteFromFloor: 0,
+			noteFromSource: 0
 		},
 		endgame: {
 			climb: false,
 			harmony: false,
 			trap: false,
 			spotlight: false,
+			over30: false,
+			under30: false,
+			wasDefenseBot: false,
 			comments: "",
 		},
 	});

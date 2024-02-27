@@ -32,7 +32,7 @@ function NoteFromFloor(props) {
         cy={17.2692}
         r={13.7692}
         transform="matrix(1 0 0 -1 6 41.538)"
-        stroke="#FFE600"
+        stroke={props.color}
         strokeWidth={7}
       />
     </Svg>

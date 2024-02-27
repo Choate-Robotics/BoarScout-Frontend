@@ -99,6 +99,7 @@ export default function ListMatches({ navigation, ...props }) {
         } else {
             navigation.navigate("scoutpage", {
                 team: item,
+                match: gameIndex + 1,
                 event: matchData,
             });
         }
