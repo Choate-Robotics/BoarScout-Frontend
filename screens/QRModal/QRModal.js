@@ -61,7 +61,9 @@ export default function QRModal({ navigation, ...props }) {
 			...formattedData,
 		];
 
-		let qrData = qrcode(JSON.stringify(postingData), {
+		const qrCSV = postingData.join("\t") + "\n";
+
+		let qrData = qrcode(qrCSV, {
 			size: 200,
 		});
 		return qrData.replace("gif", "png");

@@ -3,7 +3,7 @@
     "name": "BoarScout",
     "slug": "BoarScout",
     "scheme": "BoarScout",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -17,7 +17,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "buildNumber": "211",
+      "buildNumber": "212",
       "bundleIdentifier": "com.splashsoftwarellc.boarscout2",
       "infoPlist": {
         "NSCameraUsageDescription": "Use camera for app",
