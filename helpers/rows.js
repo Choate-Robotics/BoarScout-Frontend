@@ -89,25 +89,15 @@ export const TELEOP_ROWS = [
 	},
 	{
 		items: [
-			{ name: "amp", keyVal: ["teleop", "attemptsAmp"], tiny: true },
+			{ name: "amp", keyVal: ["teleop", "attemptsAmp"] },
 			{
 				name: "amp",
 				success: true,
 				keyVal: ["teleop", "successAmp"],
 				attemptsVal: ["teleop", "attemptsAmp"],
-				tiny: true
-			},
-			{
-				name: "amp",
-				success: true,
-				amped: true,
-				keyVal: ["teleop", "successChargedAmp"],
-				attemptsVal: ["teleop", "attemptsAmp"],
-				attemptsVal2: ["teleop", "successAmp"],
-				tiny: true
 			},
 		],
-		style: { marginHorizontal: wp(-7) },
+		style: { marginHorizontal: wp(-4) },
 	},
 	{
 		items: [
@@ -134,15 +124,16 @@ export const ENDGAME_ROWS = [
 	{
 		items: [
 			{
-				name: "autoSelectStart",
+				name: "autoSelectStart4",
 				single: true,
 				selecter: true,
-				count: 3,
-				nameVal: ["Over 30 Sec", "Under 30 Sec", "Defense Bot"],
+				count: 4,
+				nameVal: ["Over 30 Sec", "Under 30 Sec", "Defense Bot", "Robot Failed"],
 				keyVal: [
 					["endgame", "over30"],
 					["endgame", "under30"],
 					["endgame", "wasDefenseBot"],
+					["endgame", "robotFailed"]
 				],
 			},
 		],

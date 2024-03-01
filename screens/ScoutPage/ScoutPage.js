@@ -43,7 +43,6 @@ export default function ScoutPage({ navigation, ...props }) {
 			successChargedSpeaker: 0,
 			attemptsAmp: 0,
 			successAmp: 0,
-			successChargedAmp: 0,
 			noteFromFloor: 0,
 			noteFromSource: 0
 		},
@@ -55,6 +54,7 @@ export default function ScoutPage({ navigation, ...props }) {
 			over30: false,
 			under30: false,
 			wasDefenseBot: false,
+			robotFailed: false,
 			comments: "",
 		},
 	});

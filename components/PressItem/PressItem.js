@@ -54,6 +54,10 @@ export default function PressItem({ item, onPress, keyVal, data, ...props }) {
                 newHeightWidth = { height: hp(20), width: wp(82.5) };
                 setImageBg("#ffffff");
                 break;
+            case "autoSelectStart4":
+                newHeightWidth = { height: hp(24), width: wp(82.5) };
+                setImageBg("#ffffff");
+                break;
             case "notefromfloor":
                 newHeightWidth = { height: hp(10), width: hp(18) };
                 newImage = <Text style={[styles.renameVal, {fontFamily: "Satoshi-Bold"}]}>NFF</Text>

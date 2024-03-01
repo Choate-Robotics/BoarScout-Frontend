@@ -3,7 +3,7 @@
     "name": "BoarScout",
     "slug": "BoarScout",
     "scheme": "BoarScout",
-    "version": "2.1.2",
+    "version": "2.1.4",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -17,7 +17,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "buildNumber": "212",
+      "buildNumber": "214",
       "bundleIdentifier": "com.splashsoftwarellc.boarscout2",
       "infoPlist": {
         "NSCameraUsageDescription": "Use camera for app",
@@ -29,7 +29,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.andrewmurgio.boarscout"
     },
     "web": {
       "favicon": "./assets/favicon.png"

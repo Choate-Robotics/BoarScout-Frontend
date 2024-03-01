@@ -18,7 +18,7 @@ export default function QRModal({ navigation, ...props }) {
 	const data = props.route.params.data;
 	const formattedData = [
 		data.event.name,
-		`Game #${data.match}`,
+		data.match,
 		data.team.substring(3),
 		data.auto.startLeft,
 		data.auto.startMiddle,
@@ -33,7 +33,6 @@ export default function QRModal({ navigation, ...props }) {
 		data.auto.midLine,
 		data.teleop.attemptsAmp,
 		data.teleop.successAmp,
-        data.teleop.successChargedAmp,
 		data.teleop.attemptsSpeaker,
 		data.teleop.successSpeaker,
         data.teleop.successChargedSpeaker,
@@ -46,6 +45,7 @@ export default function QRModal({ navigation, ...props }) {
 		data.endgame.over30,
 		data.endgame.under30,
 		data.endgame.wasDefenseBot,
+		data.endgame.robotFailed,
 		data.endgame.comments,
 	];
 	const [qrData, setQRData] = useState(null);
